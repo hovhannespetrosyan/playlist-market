@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>main</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+<body>
+<div class = "main">
+    <div class = "header">
+        <div class = "logo">
+            <img src="images/logo.png" height = "150px" width = "200px">
+        </div>
+        <div class = "nav-menu">
+            <ul>
+                <a href = "main"><li>About</li></a>
+                <% if(userInfo != undefined){ %>
+                <a href = "account"><li>account</li></a>
+                <% } %>
+                <% if(userInfo == undefined){ %>
+                <a href="login"><li>Login</li></a>
+                <% } %>
+                <a href="store"><li>Store</li></a>
+            </ul>
+        </div>
+    </div>
+    <div class = "content">
+            <% if(userInfo == undefined){ %>
+            <div class = "login_b">
+                <a href="auth/google"><input type='button' value ='Login' class = "button_log"></a>
+            </div>
+            <% } %>
+            <%	if(userInfo!=undefined){
+            console.log(userInfo);
+            %>
+            <div class = "userInfo">
+                <img src="<%= userInfo.photos[0].value.split('=')[0]+"=200" %>" alt="sorry can't upload the image" height="200px" width = "200px">
+                <div class="userInfoString">
+                    <div class = "like_btn_logout"><%= userInfo.name.givenName %></div><div class = "like_btn_logout"><%= userInfo.name.familyName %></div>
+                </div>
+                <div class='button_logout_place'><a href="logout"><input type="button" value="Logout" class='button_logout'></a></div>
+            </div>
+            <div class = "links_to_playlists">
+                <ul>
+                    <a href="my_playlists"><li>My Playlists</li></a>
+                    <a href="bought_playlists"><li>Bought Playlists</li></a>
+                </ul>
+            </div>
+            <% console.log(userInfo.photos[0].value);} %>
+    </div>
+    <div class = "footer">
+        all rights are reserved
+    </div>
+</div>
+</body>
+</html>
